@@ -1,0 +1,276 @@
+{
+  "info": {
+    "name": "Blend Public API",
+    "description": "The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It manages lending applications across home lending (mortgage), consumer lending, and deposit account opening, plus borrowers/parties, documents and disclosures, pricing, closings and eSignature, follow-ups, lenders/assignments, and webhook events, and exports industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4). Base URL: https://api.blendlabs.com (production) or https://api.beta.blendlabs.com (beta/integration). Requests use an authorization Bearer token plus blend-api-version and blend-target-instance (tenant~instance) headers. API access is credential-gated - tokens are issued to Blend customers and certified partners. Endpoints are modeled from Blend's public documentation.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{bearerToken}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.blendlabs.com", "type": "string" },
+    { "key": "bearerToken", "value": "", "type": "string" },
+    { "key": "blendApiVersion", "value": "", "type": "string" },
+    { "key": "blendTargetInstance", "value": "yourTenantName~default", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Home Lending Applications",
+      "item": [
+        {
+          "name": "List home lending applications",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/home-lending/applications?exportable=true", "host": ["{{baseUrl}}"], "path": ["home-lending", "applications"], "query": [{ "key": "exportable", "value": "true" }] },
+            "description": "Lists home lending applications, with filters for export flows."
+          }
+        },
+        {
+          "name": "Create a home lending application",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"party\": {\n    \"name\": { \"firstName\": \"Jane\", \"lastName\": \"Doe\" },\n    \"email\": \"jane.doe@example.com\"\n  },\n  \"loanPurposeType\": \"PURCHASE\"\n}" },
+            "url": { "raw": "{{baseUrl}}/home-lending/applications", "host": ["{{baseUrl}}"], "path": ["home-lending", "applications"] },
+            "description": "Creates a home lending application. Minimum input is the primary borrower name and email."
+          }
+        },
+        {
+          "name": "Get application data",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/home-lending/applications/:id", "host": ["{{baseUrl}}"], "path": ["home-lending", "applications", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a home lending application by ID."
+          }
+        },
+        {
+          "name": "Update application (losId, archive)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"losId\": \"LOS-12345\"\n}" },
+            "url": { "raw": "{{baseUrl}}/home-lending/applications/:id", "host": ["{{baseUrl}}"], "path": ["home-lending", "applications", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Updates application metadata, including the losId, or archives it."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Documents & Export",
+      "item": [
+        {
+          "name": "Export loan application file",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/home-lending/applications/:id/file-export?format=MISMO_3_4", "host": ["{{baseUrl}}"], "path": ["home-lending", "applications", ":id", "file-export"], "query": [{ "key": "format", "value": "MISMO_3_4" }], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Exports the loan application file in Fannie Mae 3.2 or MISMO 3.3.1/3.4 format."
+          }
+        },
+        {
+          "name": "Update export status",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"SUCCESS\"\n}" },
+            "url": { "raw": "{{baseUrl}}/home-lending/applications/:id/export-status", "host": ["{{baseUrl}}"], "path": ["home-lending", "applications", ":id", "export-status"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Updates the export status (IN_PROGRESS, SUCCESS, FAILED) of an application."
+          }
+        },
+        {
+          "name": "Get application documents",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/applications/:id/documents", "host": ["{{baseUrl}}"], "path": ["applications", ":id", "documents"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves the documents attached to an application."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Borrowers & Parties",
+      "item": [
+        {
+          "name": "List parties",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/applications/:id/parties", "host": ["{{baseUrl}}"], "path": ["applications", ":id", "parties"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Lists the parties (borrowers, coborrowers) on an application."
+          }
+        },
+        {
+          "name": "Add a party (coborrower)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": { \"firstName\": \"John\", \"lastName\": \"Doe\" },\n  \"email\": \"john.doe@example.com\"\n}" },
+            "url": { "raw": "{{baseUrl}}/applications/:id/parties", "host": ["{{baseUrl}}"], "path": ["applications", ":id", "parties"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Adds a coborrower or other party to an application."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Follow-ups",
+      "item": [
+        {
+          "name": "List follow-ups",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/applications/:id/follow-ups", "host": ["{{baseUrl}}"], "path": ["applications", ":id", "follow-ups"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Lists follow-ups (borrower tasks/conditions) on an application."
+          }
+        },
+        {
+          "name": "Create a follow-up",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"title\": \"Upload most recent pay stub\"\n}" },
+            "url": { "raw": "{{baseUrl}}/applications/:id/follow-ups", "host": ["{{baseUrl}}"], "path": ["applications", ":id", "follow-ups"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Creates a follow-up requesting a document or action from the borrower."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Closings & eSignature",
+      "item": [
+        {
+          "name": "Create a closing",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/closings", "host": ["{{baseUrl}}"], "path": ["closings"] },
+            "description": "Creates a closing."
+          }
+        },
+        {
+          "name": "Submit (send) a closing",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/closings/:closingId/send", "host": ["{{baseUrl}}"], "path": ["closings", ":closingId", "send"], "variable": [{ "key": "closingId", "value": "" }] },
+            "description": "Submits a closing for processing."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Events & Webhooks",
+      "item": [
+        {
+          "name": "List events",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/events", "host": ["{{baseUrl}}"], "path": ["events"] },
+            "description": "Lists event notifications such as Application Submitted and Documents Submitted."
+          }
+        },
+        {
+          "name": "Acknowledge event status",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"ACKNOWLEDGED\"\n}" },
+            "url": { "raw": "{{baseUrl}}/events/:eventId/status", "host": ["{{baseUrl}}"], "path": ["events", ":eventId", "status"], "variable": [{ "key": "eventId", "value": "" }] },
+            "description": "Acknowledges an event so it is not redelivered."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lenders & Assignments",
+      "item": [
+        {
+          "name": "List lenders",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/lenders?emails=loanofficer@example.com", "host": ["{{baseUrl}}"], "path": ["lenders"], "query": [{ "key": "emails", "value": "loanofficer@example.com" }] },
+            "description": "Retrieves lender users available for assignment."
+          }
+        },
+        {
+          "name": "Override assignees",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "blend-api-version", "value": "{{blendApiVersion}}" },
+              { "key": "blend-target-instance", "value": "{{blendTargetInstance}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"assignees\": [\n    { \"userId\": \"user-123\", \"role\": \"PRIMARY_ASSIGNEE\" }\n  ]\n}" },
+            "url": { "raw": "{{baseUrl}}/applications/:id/assignments", "host": ["{{baseUrl}}"], "path": ["applications", ":id", "assignments"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Overrides the users assigned to an application."
+          }
+        }
+      ]
+    }
+  ]
+}

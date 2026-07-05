@@ -1,0 +1,128 @@
+aid: blend-mortgage
+name: Blend
+review:
+  question: Does Blend expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-04'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Blend's public developer surface
+    (developers.blend.com) is request/response REST over HTTPS. Blend's
+    real-time/asynchronous integration mechanism is standard HTTP webhooks -
+    Blend POSTs event notifications (Application Submitted, Documents Submitted,
+    Consumer Information Updated, Application Information Updated) to a
+    customer-configured endpoint, and a REST events surface (GET /events,
+    GET /events/{id}, POST /events/{id}/status) lets integrators poll and
+    acknowledge events. There is no server-push WebSocket (ws:// or wss://) or
+    SSE transport documented on Blend's own API to model.
+findings:
+  summary: |
+    Blend does not publish a documented public WebSocket API. Blend (Blend Labs)
+    is a cloud digital-lending and account-opening platform. Its Public API,
+    documented at developers.blend.com (current version v12.0.0), is a REST API
+    over HTTPS. Base host is api.blendlabs.com (production), with
+    api.beta.blendlabs.com used in the documentation's examples. Authentication
+    uses an authorization Bearer token, and every call also sends a
+    blend-api-version header (to pin the API version) and a blend-target-instance
+    header in the form tenant~instance. API Secret Keys are base64-encoded 80-byte
+    secrets exchanged for short-lived, request-scoped JWTs at Blend's API Gateway;
+    IP allowlisting and rate limiting are supported. Asynchronous delivery is via
+    standard HTTP webhooks plus a pollable/acknowledgeable REST events surface -
+    not a WebSocket. No ws:// or wss:// endpoint is documented anywhere in Blend's
+    developer documentation as of the review date.
+  accessModel: |
+    Blend's API is documented publicly but access is credential-gated. Blend does
+    not offer open, self-service, credit-card signup for API keys. Tokens are
+    issued to Blend customers (banks, credit unions, mortgage lenders) and to
+    certified integration partners (LOS, POS, CRM, verification, title/closing,
+    and AI-agent integrators). Prospective integrators contact Blend partnerships;
+    existing customers contact their Blend account team. Blend has also shipped an
+    MCP server exposing the lending platform to AI agents, enabled per account in a
+    beta environment with self-serve enablement stated as coming.
+  endpointsModeled: true
+  endpointsModeledNote: |
+    The paths, methods, and resource names captured here and in the OpenAPI and
+    collections are modeled from Blend's public developer documentation and
+    reference (the developers.blend.com llms.txt endpoint index, Quick Start
+    Guide, LOS Guide, API auth/security details, and the create/export home-loan
+    guides). Individual request/response field schemas are representative rather
+    than field-complete, because the authoritative machine-readable spec at
+    developers.blend.com/blend/openapi is behind credentialed access.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.blendlabs.com
+      documented: true
+      note: Public API. Documentation examples use the beta host https://api.beta.blendlabs.com. Bearer token plus blend-api-version and blend-target-instance headers.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Standard webhook event notifications POSTed to a customer-configured endpoint (Application Submitted, Documents Submitted, Consumer Information Updated, Application Information Updated).
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Blend's developer documentation as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.blendlabs.com/home-lending/applications
+    - POST   https://api.blendlabs.com/home-lending/applications
+    - GET    https://api.blendlabs.com/home-lending/applications/{id}
+    - PATCH  https://api.blendlabs.com/home-lending/applications/{id}
+    - GET    https://api.blendlabs.com/home-lending/applications/{id}/file-export
+    - GET    https://api.blendlabs.com/home-lending/applications/export-statuses
+    - POST   https://api.blendlabs.com/home-lending/applications/{id}/export-status
+    - GET    https://api.blendlabs.com/applications/{id}/parties
+    - POST   https://api.blendlabs.com/applications/{id}/parties
+    - PATCH  https://api.blendlabs.com/applications/{id}/parties/{partyId}
+    - GET    https://api.blendlabs.com/applications/{id}/documents
+    - POST   https://api.blendlabs.com/documents
+    - GET    https://api.blendlabs.com/documents/{id}
+    - PUT    https://api.blendlabs.com/applications/{id}/product
+    - POST   https://api.blendlabs.com/closings
+    - GET    https://api.blendlabs.com/closings/{id}
+    - POST   https://api.blendlabs.com/closings/{id}/send
+    - POST   https://api.blendlabs.com/applications/{id}/packages
+    - GET    https://api.blendlabs.com/applications/{id}/follow-ups
+    - POST   https://api.blendlabs.com/applications/{id}/follow-ups
+    - GET    https://api.blendlabs.com/events
+    - GET    https://api.blendlabs.com/events/{id}
+    - POST   https://api.blendlabs.com/events/{id}/status
+    - GET    https://api.blendlabs.com/consumer-lending/applications/{id}
+    - GET    https://api.blendlabs.com/account-opening/applications/{id}
+    - GET    https://api.blendlabs.com/deposit-accounts/applications
+    - GET    https://api.blendlabs.com/lenders
+    - PUT    https://api.blendlabs.com/applications/{id}/assignments
+    - GET    https://api.blendlabs.com/reports/loans
+sources:
+  - url: https://developers.blend.com/blend
+    type: Documentation
+    note: Blend API docs home; current version v12.0.0; OpenAPI download and llms.txt endpoint index referenced.
+  - url: https://developers.blend.com/blend/docs/blend-api-quick-start-guide
+    type: Documentation
+    note: Quick Start Guide; authorization Bearer token, blend-api-version, and blend-target-instance (tenant~instance) headers.
+  - url: https://developers.blend.com/blend/docs/api-auth-security-details
+    type: Documentation
+    note: Authentication and authorization; 80-byte base64 API Secret Keys exchanged for short-lived request-scoped JWTs at the API Gateway; IP allowlisting and rate limiting; all REST. No WebSocket mentioned.
+  - url: https://developers.blend.com/blend/docs/create-a-new-home-loan
+    type: Documentation
+    note: Create a home lending application (POST /home-lending/applications); parties, lenders, assignees.
+  - url: https://developers.blend.com/blend/docs/export-a-home-loan
+    type: Documentation
+    note: Export the loan file (Fannie Mae 3.2, MISMO 3.3.1/3.4) and manage export statuses.
+  - url: https://developers.blend.com/blend/docs/los-guide-how-to-integrate-with-blend
+    type: Documentation
+    note: LOS integration guide; webhook event notifications (Application Submitted, Documents Submitted, etc.).
+  - url: https://blend.com/blog/blend-momentum/autopilot-update-ai-infrastructure-mcp-server-ships-opening-full-lending-platform-ai-agents/
+    type: Announcement
+    note: Blend MCP server opening the lending platform to AI agents; least-privilege Lending API credentials; beta enablement.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Blend's own public API is
+    request/response REST, and its asynchronous mechanism is standard HTTP
+    webhooks plus a pollable/acknowledgeable REST events surface. No AsyncAPI
+    document was created because there is no server-push transport (WebSocket or
+    SSE) on Blend's own API to model. The apis.yml documents ten logical REST
+    APIs modeled from Blend's public documentation; access remains credential-gated
+    to Blend customers and certified partners.

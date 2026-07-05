@@ -1,0 +1,118 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Blend
+providerId: blend-mortgage
+created: '2026-07-04'
+modified: '2026-07-04'
+reconciled: false
+tags:
+- Digital Lending
+- Mortgage
+- Consumer Lending
+- Account Opening
+- Plans
+description: >-
+  Blend is an enterprise SaaS lending platform sold to banks, credit unions, and
+  mortgage lenders. Pricing is not published: deals are negotiated, typically annual,
+  and priced on loan/application volume, the product mix (mortgage, consumer lending,
+  deposit account opening, close, income/asset verification add-ons), and integration
+  scope. Historically Blend has used per-transaction / per-funded-loan economics in
+  parts of its mortgage business alongside platform subscription fees. The Public API
+  is an entitlement of a Blend customer or certified-partner relationship rather than a
+  separately metered, self-service product - there is no open, credit-card signup for
+  API keys. Exact figures are not reconciled here.
+notes: >-
+  Access to the Blend Public API (developers.blend.com) requires becoming a Blend
+  customer or certified integration partner; credentials are issued by Blend, not via
+  self-service. Contact Blend partnerships (to integrate as a partner) or your Blend
+  account team (existing customer) to obtain API tokens. Verify current commercial terms
+  and any per-loan / per-application pricing directly with Blend sales.
+sources:
+- https://blend.com/
+- https://developers.blend.com/blend
+- https://developers.blend.com/blend/docs/blend-api-quick-start-guide
+- https://developers.blend.com/blend/docs/api-auth-security-details
+plans:
+- id: blend-partner-beta
+  name: Partner / Beta Access
+  type: partner
+  description: >-
+    Certified technology partners (LOS, POS, CRM, verification, title/closing, AI agent
+    integrators) are provisioned API credentials in a Blend beta/integration environment
+    to build and certify an integration against the Public API.
+  entries:
+  - label: API Access (Partner)
+    name: partner_api_access
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact Blend partnerships (partner agreement required)
+    userMultiplied: false
+  elements:
+  - name: Beta / Integration Environment
+  - name: Full Public API Surface
+  - name: Webhook Event Notifications
+  - name: Certification Support
+- id: blend-customer
+  name: Blend Customer (Platform + API)
+  type: enterprise
+  description: >-
+    Banks, credit unions, and mortgage lenders licensing the Blend platform receive API
+    access as an entitlement of their subscription. Commercial terms are negotiated on
+    volume, product mix, and scope.
+  entries:
+  - label: Platform Subscription
+    name: platform_subscription
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales (custom, typically annual)
+    userMultiplied: false
+  - label: Per-Loan / Per-Application Volume
+    name: per_loan_volume
+    type: usage
+    metric: loans
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: negotiated per-transaction economics on parts of the mortgage business (verify with sales)
+    userMultiplied: false
+  elements:
+  - name: Home Lending (Mortgage) Origination
+  - name: Consumer Lending
+  - name: Deposit Account Opening
+  - name: Public API + Webhooks
+  - name: Close / eSignature / RON
+  - name: Income & Asset Verification (add-ons)
+- id: blend-enterprise
+  name: Enterprise / Custom
+  type: enterprise
+  description: >-
+    Large or multi-product deployments with negotiated volume pricing, SLAs, security
+    reviews, dedicated support, and custom integration scope.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume Pricing
+  - name: SLAs and Dedicated Support
+  - name: Security and Compliance Reviews
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

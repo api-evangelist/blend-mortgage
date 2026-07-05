@@ -1,0 +1,97 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Blend
+providerId: blend-mortgage
+created: '2026-07-04'
+modified: '2026-07-04'
+reconciled: false
+tags:
+- Digital Lending
+- Mortgage
+- Consumer Lending
+- FinTech
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Blend spend. Blend is an enterprise lending platform billed under a
+  negotiated agreement rather than a public usage meter, so cost visibility comes from
+  the contract's structure - a platform subscription combined, in parts of the mortgage
+  business, with per-loan / per-application / per-funded-loan transaction economics, plus
+  add-ons (income and asset verification, close/eSignature/RON). The Public API itself is
+  not separately metered; it is an entitlement of the customer or certified-partner
+  relationship. The dominant cost drivers are application/loan volume and product mix.
+notes: >-
+  Blend does not publish rates; per-unit economics are not reconciled here. Track spend
+  against the negotiated agreement and map it to loan/application volume and the enabled
+  product lines. Verify current commercial terms with Blend sales.
+sources:
+- https://blend.com/
+- https://developers.blend.com/blend
+- https://developers.blend.com/blend/docs/blend-api-quick-start-guide
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Blend
+serviceCategory: Financial Services and Lending Platform
+billingModel:
+  pricingCategory: Subscription plus Usage
+  billingFrequency: Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Blend Platform
+  ServiceCategory: Financial Services and Lending Platform
+  ProviderName: Blend
+  PublisherName: Blend
+  InvoiceIssuerName: Blend
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription plus Usage
+meters:
+- name: applications
+  description: Lending applications created/processed on the platform, a primary volume driver.
+  unit: applications
+  aggregation: sum
+  dimensions:
+  - account
+  - product
+- name: funded_loans
+  description: Funded loans, a driver of per-transaction economics in parts of the mortgage business.
+  unit: loans
+  aggregation: sum
+  dimensions:
+  - account
+  - product
+- name: verifications
+  description: Income and asset verification calls run during origination (add-on cost).
+  unit: verifications
+  aggregation: sum
+  dimensions:
+  - account
+- name: closings
+  description: Close / eSignature / RON transactions completed through the platform.
+  unit: closings
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track application and funded-loan volume by product line (mortgage, consumer lending, deposit) against the negotiated agreement.
+- name: Allocation
+  description: Tag applications and loans by branch, channel, or team so platform and per-transaction costs map to internal cost centers.
+- name: Optimization
+  description: Right-size enabled product lines and verification add-ons to actual usage; negotiate volume tiers as origination volume grows.
+- name: Accountability
+  description: Assign an owner for the Blend relationship; review volume and add-on usage against contracted commitments each billing period.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

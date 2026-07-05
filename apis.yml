@@ -1,0 +1,270 @@
+aid: blend-mortgage
+url: https://raw.githubusercontent.com/api-evangelist/blend-mortgage/refs/heads/main/apis.yml
+name: Blend
+kind: company
+description: Blend (Blend Labs) is a cloud digital-lending and account-opening platform
+  for banks, credit unions, and mortgage lenders. Its Builder platform powers
+  consumer-facing origination for mortgage (home lending), consumer lending (home
+  equity, personal loans, credit cards, auto), and deposit account opening. The Blend
+  Public API is a documented REST surface (developers.blend.com) that lets lenders and
+  their technology partners create and manage lending applications, borrowers/parties,
+  documents and disclosures, pricing, closings and eSignature packages, follow-ups
+  (tasks), assignments, and webhook event notifications, and to export industry-standard
+  loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).
+  API access is credential-gated - tokens are issued to Blend customers and certified
+  integration partners rather than through open self-service signup.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Digital Lending
+- Mortgage
+- Consumer Lending
+- Account Opening
+- FinTech
+- Loan Origination
+- Banking
+- Financial Services
+created: '2026-07-04'
+modified: '2026-07-04'
+specificationVersion: '0.19'
+apis:
+- aid: blend-mortgage:blend-mortgage-home-lending-applications-api
+  name: Blend Home Lending Applications API
+  tags:
+  - Home Lending
+  - Mortgage
+  - Applications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/docs/create-a-new-home-loan
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/docs/create-a-new-home-loan
+    type: Documentation
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete home lending (mortgage)
+    applications. Manage LOS milestones, decisions, intent-to-proceed, underwriting
+    results, activities, and lender takeover. The minimum to create an application is
+    the primary borrower party name and email.
+- aid: blend-mortgage:blend-mortgage-borrowers-parties-api
+  name: Blend Borrowers & Parties API
+  tags:
+  - Borrowers
+  - Parties
+  - Coborrowers
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/reference
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Manage the parties (borrowers, coborrowers, realtors) on an application -
+    add and update parties, capture eConsent, and attach party employers, other incomes,
+    and borrower positions.
+- aid: blend-mortgage:blend-mortgage-documents-disclosures-api
+  name: Blend Documents & Disclosures API
+  tags:
+  - Documents
+  - Disclosures
+  - Export
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/docs/export-a-home-loan
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/docs/export-a-home-loan
+    type: Documentation
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Retrieve application and borrower documents, upload documents, read
+    document metadata and export statuses, pull tax transcripts, and export the
+    industry-standard loan application file in Fannie Mae 3.2 or MISMO 3.3.1/3.4 format
+    for import into an LOS.
+- aid: blend-mortgage:blend-mortgage-products-pricing-api
+  name: Blend Products & Pricing API
+  tags:
+  - Pricing
+  - Products
+  - Rates
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/reference
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Apply a priced product to a loan application, aligning the selected rate
+    and product to the borrower's chosen loan terms.
+- aid: blend-mortgage:blend-mortgage-closings-esign-api
+  name: Blend Closings & eSignature API
+  tags:
+  - Closings
+  - eSignature
+  - Packages
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/reference
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Create and manage closings and eSignature packages - draft and send
+    pre-closing and closing documents, manage eNotes, schedule Remote Online
+    Notarization (RON) sessions, retrieve RON recordings, and issue signable
+    document packages to borrowers.
+- aid: blend-mortgage:blend-mortgage-follow-ups-tasks-api
+  name: Blend Follow-ups (Tasks) API
+  tags:
+  - Follow-ups
+  - Tasks
+  - Conditions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/reference
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and remove follow-ups (borrower tasks
+    and conditions) on an application to request documents or actions from borrowers
+    during the origination workflow.
+- aid: blend-mortgage:blend-mortgage-events-webhooks-api
+  name: Blend Events & Webhooks API
+  tags:
+  - Events
+  - Webhooks
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/docs/los-guide-how-to-integrate-with-blend
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/docs/los-guide-how-to-integrate-with-blend
+    type: Documentation
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Standard webhook event notifications (Application Submitted, Documents
+    Submitted, Consumer Information Updated, Application Information Updated) plus a
+    REST events surface to list events, get event descriptions, and acknowledge event
+    status - used to drive LOS import and downstream automation.
+- aid: blend-mortgage:blend-mortgage-consumer-deposit-api
+  name: Blend Consumer Lending & Deposit Accounts API
+  tags:
+  - Consumer Lending
+  - Deposit Accounts
+  - Account Opening
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/reference
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Retrieve and update consumer lending applications and their documents,
+    read account-opening applications, and list deposit account applications, products,
+    and fundings for the banking/account-opening side of the Blend platform.
+- aid: blend-mortgage:blend-mortgage-lenders-assignments-api
+  name: Blend Lenders & Assignments API
+  tags:
+  - Lenders
+  - Assignments
+  - Users
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/reference
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Create, list, update, and remove lender users, and assign lender users
+    (primary assignee and assignees) to applications so the right loan officers and
+    processors own each loan.
+- aid: blend-mortgage:blend-mortgage-reporting-api
+  name: Blend Reporting API
+  tags:
+  - Reporting
+  - Analytics
+  - Metrics
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.blend.com/blend/reference
+  baseURL: https://api.blendlabs.com
+  properties:
+  - url: https://developers.blend.com/blend/reference
+    type: APIReference
+  - url: openapi/blend-mortgage-openapi.yml
+    type: OpenAPI
+  - url: collections/blend-mortgage.postman_collection.json
+    type: PostmanCollection
+  - url: collections/blend-mortgage.opencollection.json
+    type: OpenCollection
+  description: Pull reporting datasets across the platform - loans, borrowers, lender
+    users and metrics, borrower workflows/activities, follow-ups, document metadata,
+    connectivity metrics, and NPS.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/blendlabs-inc-
+- type: Website
+  url: https://blend.com
+- type: Documentation
+  url: https://developers.blend.com/blend
+- type: APIReference
+  url: https://developers.blend.com/blend/reference
+- type: SignUp
+  url: https://developers.blend.com/blend/docs/blend-api-quick-start-guide
+- type: Blog
+  url: https://blend.com/blog
+- type: Plans
+  url: plans/blend-mortgage-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/blend-mortgage-rate-limits.yml
+- type: FinOps
+  url: finops/blend-mortgage-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

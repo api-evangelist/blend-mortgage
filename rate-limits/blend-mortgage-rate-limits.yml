@@ -1,0 +1,58 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Blend
+providerId: blend-mortgage
+created: '2026-07-04'
+modified: '2026-07-04'
+reconciled: false
+tags:
+- Digital Lending
+- Mortgage
+- Rate Limiting
+- Quotas
+description: >-
+  Blend does not publish fixed numeric rate limits for the Public API in its open
+  developer documentation. Blend's security documentation states that rate limiting is
+  applied (notably for non-authenticated traffic) and that requests are gated by API
+  Secret Keys exchanged for short-lived, request-scoped JWTs at the API Gateway, plus
+  optional customer-provided IP allowlisting. Effective throughput is therefore governed
+  by the customer/partner agreement and the API Gateway policy for a given tenant rather
+  than by a publicly stated per-minute cap.
+notes: >-
+  Numeric per-account or per-endpoint limits are not documented publicly as of the
+  review date and are established per tenant. Clients should honor 429 responses with
+  exponential backoff and jitter, pin calls with the blend-api-version header, and
+  confirm any contractual throughput limits with Blend during onboarding.
+sources:
+- https://developers.blend.com/blend/docs/api-auth-security-details
+- https://developers.blend.com/blend/docs/blend-api-quick-start-guide
+- https://developers.blend.com/blend
+responseCodes:
+  throttled: 429
+limits:
+- name: Public API Requests
+  scope: tenant
+  metric: requests
+  limit: not published
+  notes: No fixed numeric request-rate limit is documented publicly; governed per tenant at the API Gateway.
+- name: Unauthenticated Requests
+  scope: ip
+  metric: requests
+  limit: rate-limited
+  notes: Blend applies rate limiting to non-authenticated traffic per its security documentation.
+- name: Token Scope
+  scope: request
+  metric: tokens
+  limit: short-lived per-request JWT
+  notes: API Secret Keys are exchanged for short-lived, request-scoped JWTs at the API Gateway.
+policies:
+- name: IP Allowlisting
+  description: Customers can provide an IP allowlist so only approved source addresses may call the API.
+- name: Version Pinning
+  description: Every call should send the blend-api-version header to pin behavior to a specific API version.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
