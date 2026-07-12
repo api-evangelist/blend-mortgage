@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/blend-mortgage-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Blend authenticates requests with an authorization Bearer token. Each call must
+    also send blend-api-version (to pin the API version) and blend-target-instance (tenant~instance)
+    headers. API Secret Keys are exchanged for short-lived, request-scoped JWTs at Blend's API
+    Gateway. Credentials are issued to Blend customers and certified partners - contact your
+    Blend account team or partnerships to obtai
+  sources:
+  - openapi/blend-mortgage-openapi.yml

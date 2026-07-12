@@ -247,6 +247,10 @@ apis:
     users and metrics, borrower workflows/activities, follow-ups, document metadata,
     connectivity metrics, and NPS.
 common:
+- type: DomainSecurity
+  url: security/blend-mortgage-domain-security.yml
+- type: Authentication
+  url: authentication/blend-mortgage-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/blendlabs-inc-
 - type: Website
