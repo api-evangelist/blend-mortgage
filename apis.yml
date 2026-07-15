@@ -247,6 +247,8 @@ apis:
     users and metrics, borrower workflows/activities, follow-ups, document metadata,
     connectivity metrics, and NPS.
 common:
+- type: AgenticAccess
+  url: agentic-access/blend-mortgage-agentic-access.yml
 - type: DomainSecurity
   url: security/blend-mortgage-domain-security.yml
 - type: Authentication
