@@ -1,0 +1,266 @@
+openapi: 3.0.3
+info:
+  title: Blend Public Borrowers & Parties Documents & Disclosures API
+  description: 'The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).
+
+
+    endpointsModeled: The paths, methods, and resource names in this document are modeled from Blend''s public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.'
+  version: 12.0.0
+  contact:
+    name: Blend Labs
+    url: https://developers.blend.com/blend
+  termsOfService: https://blend.com/legal/terms-of-service/
+servers:
+- url: https://api.blendlabs.com
+  description: Production
+- url: https://api.beta.blendlabs.com
+  description: Beta / integration environment (used in Blend's documentation examples)
+security:
+- bearerAuth: []
+tags:
+- name: Documents & Disclosures
+  description: Documents, disclosures, tax transcripts, and loan file export.
+paths:
+  /home-lending/applications/{id}/file-export:
+    parameters:
+    - $ref: '#/components/parameters/ApplicationId'
+    get:
+      operationId: exportApplicationFile
+      tags:
+      - Documents & Disclosures
+      summary: Export the loan application file
+      description: Exports the industry-standard loan application file in the requested format for import into an LOS.
+      parameters:
+      - name: format
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - FANNIE_MAE_3_2
+          - MISMO_3_3_1
+          - MISMO_3_4
+        description: The export format (Fannie Mae 3.2, MISMO 3.3.1, or MISMO 3.4 beta).
+      responses:
+        '200':
+          description: The exported loan file.
+          content:
+            application/xml: {}
+            application/json: {}
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /home-lending/applications/export-statuses:
+    get:
+      operationId: getExportStatuses
+      tags:
+      - Documents & Disclosures
+      summary: Get application export statuses
+      parameters:
+      - name: ids
+        in: query
+        schema:
+          type: string
+        description: Comma-separated application IDs.
+      responses:
+        '200':
+          description: Export statuses for the requested applications.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ExportStatus'
+  /home-lending/applications/{id}/export-status:
+    parameters:
+    - $ref: '#/components/parameters/ApplicationId'
+    post:
+      operationId: setExportStatus
+      tags:
+      - Documents & Disclosures
+      summary: Update application export status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - status
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - IN_PROGRESS
+                  - SUCCESS
+                  - FAILED
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: The updated export status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportStatus'
+  /applications/{id}/documents:
+    parameters:
+    - $ref: '#/components/parameters/ApplicationId'
+    get:
+      operationId: getApplicationDocuments
+      tags:
+      - Documents & Disclosures
+      summary: Get application documents
+      responses:
+        '200':
+          description: Documents attached to the application.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Document'
+  /documents:
+    post:
+      operationId: uploadDocument
+      tags:
+      - Documents & Disclosures
+      summary: Upload a document
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: The uploaded document.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+    get:
+      operationId: getDocuments
+      tags:
+      - Documents & Disclosures
+      summary: List documents
+      responses:
+        '200':
+          description: A list of documents.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Document'
+  /documents/{documentId}:
+    parameters:
+    - $ref: '#/components/parameters/DocumentId'
+    get:
+      operationId: getDocument
+      tags:
+      - Documents & Disclosures
+      summary: Get a document
+      responses:
+        '200':
+          description: The document (binary or metadata reference).
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: patchDocument
+      tags:
+      - Documents & Disclosures
+      summary: Update document data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: The updated document.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+  /documents/{documentId}/metadata:
+    parameters:
+    - $ref: '#/components/parameters/DocumentId'
+    get:
+      operationId: getDocumentMetadata
+      tags:
+      - Documents & Disclosures
+      summary: Get document metadata
+      responses:
+        '200':
+          description: Document metadata.
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The application ID.
+    DocumentId:
+      name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The document ID.
+  schemas:
+    ExportStatus:
+      type: object
+      properties:
+        applicationId:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - SUCCESS
+          - FAILED
+        reason:
+          type: string
+    Document:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Blend authenticates requests with an authorization Bearer token. Each call must also send blend-api-version (to pin the API version) and blend-target-instance (tenant~instance) headers. API Secret Keys are exchanged for short-lived, request-scoped JWTs at Blend's API Gateway. Credentials are issued to Blend customers and certified partners - contact your Blend account team or partnerships to obtain them.

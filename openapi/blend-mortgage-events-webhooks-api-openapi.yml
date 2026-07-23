@@ -1,0 +1,119 @@
+openapi: 3.0.3
+info:
+  title: Blend Public Borrowers & Parties Events & Webhooks API
+  description: 'The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).
+
+
+    endpointsModeled: The paths, methods, and resource names in this document are modeled from Blend''s public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.'
+  version: 12.0.0
+  contact:
+    name: Blend Labs
+    url: https://developers.blend.com/blend
+  termsOfService: https://blend.com/legal/terms-of-service/
+servers:
+- url: https://api.blendlabs.com
+  description: Production
+- url: https://api.beta.blendlabs.com
+  description: Beta / integration environment (used in Blend's documentation examples)
+security:
+- bearerAuth: []
+tags:
+- name: Events & Webhooks
+  description: Event notifications and event status.
+paths:
+  /events:
+    get:
+      operationId: getEvents
+      tags:
+      - Events & Webhooks
+      summary: List events
+      description: Lists event notifications (for example Application Submitted, Documents Submitted, Consumer Information Updated, Application Information Updated).
+      responses:
+        '200':
+          description: A list of events.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+  /events/descriptions:
+    get:
+      operationId: getEventDescriptions
+      tags:
+      - Events & Webhooks
+      summary: Get event descriptions
+      responses:
+        '200':
+          description: Available event types and their descriptions.
+  /events/{eventId}:
+    parameters:
+    - name: eventId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getEvent
+      tags:
+      - Events & Webhooks
+      summary: Get an event
+      responses:
+        '200':
+          description: The event.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+  /events/{eventId}/status:
+    parameters:
+    - name: eventId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: setEventStatus
+      tags:
+      - Events & Webhooks
+      summary: Set event status
+      description: Acknowledge an event so it is not redelivered.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - ACKNOWLEDGED
+                  - PROCESSED
+                  - FAILED
+      responses:
+        '200':
+          description: The updated event status.
+components:
+  schemas:
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        applicationId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Blend authenticates requests with an authorization Bearer token. Each call must also send blend-api-version (to pin the API version) and blend-target-instance (tenant~instance) headers. API Secret Keys are exchanged for short-lived, request-scoped JWTs at Blend's API Gateway. Credentials are issued to Blend customers and certified partners - contact your Blend account team or partnerships to obtain them.

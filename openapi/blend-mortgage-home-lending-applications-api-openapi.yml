@@ -1,0 +1,251 @@
+openapi: 3.0.3
+info:
+  title: Blend Public Borrowers & Parties Home Lending Applications API
+  description: 'The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).
+
+
+    endpointsModeled: The paths, methods, and resource names in this document are modeled from Blend''s public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.'
+  version: 12.0.0
+  contact:
+    name: Blend Labs
+    url: https://developers.blend.com/blend
+  termsOfService: https://blend.com/legal/terms-of-service/
+servers:
+- url: https://api.blendlabs.com
+  description: Production
+- url: https://api.beta.blendlabs.com
+  description: Beta / integration environment (used in Blend's documentation examples)
+security:
+- bearerAuth: []
+tags:
+- name: Home Lending Applications
+  description: Create and manage mortgage (home lending) applications.
+paths:
+  /home-lending/applications:
+    get:
+      operationId: listHomeLendingApplications
+      tags:
+      - Home Lending Applications
+      summary: List home lending applications
+      description: Lists home lending applications. Supports filters used for export flows such as exportable=true and losId-exists=false.
+      parameters:
+      - name: exportable
+        in: query
+        schema:
+          type: boolean
+        description: Return only applications ready to export.
+      - name: losId-exists
+        in: query
+        schema:
+          type: boolean
+        description: Filter by whether an LOS ID has been assigned.
+      responses:
+        '200':
+          description: A list of home lending applications.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Application'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createHomeLendingApplication
+      tags:
+      - Home Lending Applications
+      summary: Create a home lending application
+      description: Creates a new home lending application. The minimum required input is the primary borrower party's name (firstName, lastName) and email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApplicationRequest'
+      responses:
+        '201':
+          description: The created application.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /home-lending/applications/{id}:
+    parameters:
+    - $ref: '#/components/parameters/ApplicationId'
+    get:
+      operationId: getApplication
+      tags:
+      - Home Lending Applications
+      summary: Get application data
+      responses:
+        '200':
+          description: The application.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: patchApplication
+      tags:
+      - Home Lending Applications
+      summary: Update application data
+      description: Update application metadata, including the losId, or archive the application.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                losId:
+                  type: string
+                archived:
+                  type: boolean
+      responses:
+        '200':
+          description: The updated application.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteApplication
+      tags:
+      - Home Lending Applications
+      summary: Delete an application
+      responses:
+        '204':
+          description: Deleted.
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or the token is not authorized for this tenant.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+        solutionSubType:
+          type: string
+        loanPurposeType:
+          type: string
+        losId:
+          type: string
+        parties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Party'
+    Party:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+        email:
+          type: string
+          format: email
+        econsent:
+          type: string
+    CreateApplicationRequest:
+      type: object
+      required:
+      - party
+      properties:
+        party:
+          type: object
+          required:
+          - name
+          - email
+          properties:
+            name:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+            email:
+              type: string
+              format: email
+        loanPurposeType:
+          type: string
+          enum:
+          - PURCHASE
+          - REFINANCE
+        applicationExperienceType:
+          type: string
+          example: FULL_APPLICATION
+        applicationSource:
+          type: object
+          properties:
+            type:
+              type: string
+            name:
+              type: string
+        crmId:
+          type: string
+        losId:
+          type: string
+        leadId:
+          type: string
+        referenceNumber:
+          type: string
+        sendEmailInvite:
+          type: boolean
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+  parameters:
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The application ID.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Blend authenticates requests with an authorization Bearer token. Each call must also send blend-api-version (to pin the API version) and blend-target-instance (tenant~instance) headers. API Secret Keys are exchanged for short-lived, request-scoped JWTs at Blend's API Gateway. Credentials are issued to Blend customers and certified partners - contact your Blend account team or partnerships to obtain them.

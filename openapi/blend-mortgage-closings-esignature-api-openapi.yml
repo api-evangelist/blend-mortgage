@@ -1,0 +1,176 @@
+openapi: 3.0.3
+info:
+  title: Blend Public Borrowers & Parties Closings & eSignature API
+  description: 'The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).
+
+
+    endpointsModeled: The paths, methods, and resource names in this document are modeled from Blend''s public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.'
+  version: 12.0.0
+  contact:
+    name: Blend Labs
+    url: https://developers.blend.com/blend
+  termsOfService: https://blend.com/legal/terms-of-service/
+servers:
+- url: https://api.blendlabs.com
+  description: Production
+- url: https://api.beta.blendlabs.com
+  description: Beta / integration environment (used in Blend's documentation examples)
+security:
+- bearerAuth: []
+tags:
+- name: Closings & eSignature
+  description: Closings, packages, eNotes, and RON sessions.
+paths:
+  /closings:
+    post:
+      operationId: createClosing
+      tags:
+      - Closings & eSignature
+      summary: Create a closing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: The created closing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Closing'
+    get:
+      operationId: listClosings
+      tags:
+      - Closings & eSignature
+      summary: List closings
+      responses:
+        '200':
+          description: A list of closings.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Closing'
+  /closings/{closingId}:
+    parameters:
+    - $ref: '#/components/parameters/ClosingId'
+    get:
+      operationId: getClosing
+      tags:
+      - Closings & eSignature
+      summary: Get a closing
+      responses:
+        '200':
+          description: The closing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Closing'
+    patch:
+      operationId: updateClosing
+      tags:
+      - Closings & eSignature
+      summary: Update a closing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: The updated closing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Closing'
+  /closings/{closingId}/send:
+    parameters:
+    - $ref: '#/components/parameters/ClosingId'
+    post:
+      operationId: submitClosing
+      tags:
+      - Closings & eSignature
+      summary: Submit (send) a closing
+      responses:
+        '202':
+          description: Closing submitted for processing.
+  /applications/{id}/packages:
+    parameters:
+    - $ref: '#/components/parameters/ApplicationId'
+    get:
+      operationId: listPackages
+      tags:
+      - Closings & eSignature
+      summary: List eSignature packages
+      responses:
+        '200':
+          description: The packages for the application.
+    post:
+      operationId: createPackage
+      tags:
+      - Closings & eSignature
+      summary: Create an eSignature package
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: The created package.
+  /applications/{id}/packages/{packageId}/issue:
+    parameters:
+    - $ref: '#/components/parameters/ApplicationId'
+    - name: packageId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: issuePackage
+      tags:
+      - Closings & eSignature
+      summary: Issue a draft package for signature
+      responses:
+        '202':
+          description: Package issued to recipients.
+components:
+  parameters:
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The application ID.
+    ClosingId:
+      name: closingId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The closing ID.
+  schemas:
+    Closing:
+      type: object
+      properties:
+        id:
+          type: string
+        applicationId:
+          type: string
+        status:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Blend authenticates requests with an authorization Bearer token. Each call must also send blend-api-version (to pin the API version) and blend-target-instance (tenant~instance) headers. API Secret Keys are exchanged for short-lived, request-scoped JWTs at Blend's API Gateway. Credentials are issued to Blend customers and certified partners - contact your Blend account team or partnerships to obtain them.
