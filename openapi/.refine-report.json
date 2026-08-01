@@ -1,0 +1,32 @@
+{
+  "provider": "blend-mortgage",
+  "sources": [
+    "blend-mortgage-borrowers-parties-api-openapi.yml",
+    "blend-mortgage-closings-esignature-api-openapi.yml",
+    "blend-mortgage-consumer-lending-deposit-api-openapi.yml",
+    "blend-mortgage-documents-disclosures-api-openapi.yml",
+    "blend-mortgage-events-webhooks-api-openapi.yml",
+    "blend-mortgage-follow-ups-api-openapi.yml",
+    "blend-mortgage-home-lending-applications-api-openapi.yml",
+    "blend-mortgage-lenders-assignments-api-openapi.yml",
+    "blend-mortgage-products-pricing-api-openapi.yml",
+    "blend-mortgage-reporting-api-openapi.yml"
+  ],
+  "outputs": [
+    "blend-mortgage-borrowers-parties-api-openapi.yml",
+    "blend-mortgage-closings-esignature-api-openapi.yml",
+    "blend-mortgage-consumer-lending-deposit-api-openapi.yml",
+    "blend-mortgage-documents-disclosures-api-openapi.yml",
+    "blend-mortgage-events-webhooks-api-openapi.yml",
+    "blend-mortgage-follow-ups-api-openapi.yml",
+    "blend-mortgage-home-lending-applications-api-openapi.yml",
+    "blend-mortgage-lenders-assignments-api-openapi.yml",
+    "blend-mortgage-products-pricing-api-openapi.yml",
+    "blend-mortgage-reporting-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
