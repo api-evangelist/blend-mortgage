@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Borrowers & Parties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List parties for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/applications/:id/parties",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "List parties for an application"
+        },
+        {
+          "info": {
+            "name": "Add a party (coborrower, etc.) to an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/applications/:id/parties",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a party (coborrower, etc.) to an application"
+        },
+        {
+          "info": {
+            "name": "Update a party",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.blendlabs.com/applications/:id/parties/:partyId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              },
+              {
+                "name": "partyId",
+                "value": "",
+                "type": "path",
+                "description": "The party ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a party"
+        },
+        {
+          "info": {
+            "name": "Remove a party",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.blendlabs.com/applications/:id/parties/:partyId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              },
+              {
+                "name": "partyId",
+                "value": "",
+                "type": "path",
+                "description": "The party ID."
+              }
+            ]
+          },
+          "docs": "Remove a party"
+        },
+        {
+          "info": {
+            "name": "Get borrower positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/applications/:id/borrower-positions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "Get borrower positions"
+        },
+        {
+          "info": {
+            "name": "Set borrower positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.blendlabs.com/applications/:id/borrower-positions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set borrower positions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

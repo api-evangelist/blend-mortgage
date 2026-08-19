@@ -1,0 +1,149 @@
+{
+  "item": [
+    {
+      "id": "27a17260-2cb6-40b6-a30f-5a9f66e6da30",
+      "name": "Products & Pricing",
+      "description": {
+        "content": "Apply a priced product to a loan.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27375f9a-3087-49c8-b1bc-378159012f1a",
+          "name": "Apply a priced product to a loan",
+          "request": {
+            "name": "Apply a priced product to a loan",
+            "description": {},
+            "url": {
+              "path": [
+                "applications",
+                ":id",
+                "product"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": \"<string>\",\n  \"rate\": \"<number>\",\n  \"term\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb8e0898-d286-402c-bdc9-afb599e78acf",
+              "name": "The product applied to the loan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications",
+                    ":id",
+                    "product"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productId\": \"<string>\",\n  \"rate\": \"<number>\",\n  \"term\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blendlabs.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "11ee8953-d304-4eaa-ac78-7ef3d2c5c19d",
+    "name": "Blend Public Borrowers & Parties Products & Pricing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).\n\nendpointsModeled: The paths, methods, and resource names in this document are modeled from Blend's public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.\n\nContact Support:\n Name: Blend Labs",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties Documents & Disclosures API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents & Disclosures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export the loan application file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/home-lending/applications/:id/file-export",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The export format (Fannie Mae 3.2, MISMO 3.3.1, or MISMO 3.4 beta)."
+              }
+            ]
+          },
+          "docs": "Exports the industry-standard loan application file in the requested format for import into an LOS."
+        },
+        {
+          "info": {
+            "name": "Get application export statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/home-lending/applications/export-statuses",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated application IDs."
+              }
+            ]
+          },
+          "docs": "Get application export statuses"
+        },
+        {
+          "info": {
+            "name": "Update application export status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/home-lending/applications/:id/export-status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update application export status"
+        },
+        {
+          "info": {
+            "name": "Get application documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/applications/:id/documents",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "Get application documents"
+        },
+        {
+          "info": {
+            "name": "List documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/documents"
+          },
+          "docs": "List documents"
+        },
+        {
+          "info": {
+            "name": "Upload a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/documents",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Upload a document"
+        },
+        {
+          "info": {
+            "name": "Get a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/documents/:documentId",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID."
+              }
+            ]
+          },
+          "docs": "Get a document"
+        },
+        {
+          "info": {
+            "name": "Update document data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.blendlabs.com/documents/:documentId",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update document data"
+        },
+        {
+          "info": {
+            "name": "Get document metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/documents/:documentId/metadata",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "The document ID."
+              }
+            ]
+          },
+          "docs": "Get document metadata"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

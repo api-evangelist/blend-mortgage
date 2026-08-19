@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties Products & Pricing API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products & Pricing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apply a priced product to a loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.blendlabs.com/applications/:id/product",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply a priced product to a loan"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

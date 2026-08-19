@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties Reporting API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reporting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve basic loan data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/reports/loans"
+          },
+          "docs": "Retrieve basic loan data"
+        },
+        {
+          "info": {
+            "name": "Retrieve lender users and metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/reports/lenders"
+          },
+          "docs": "Retrieve lender users and metrics"
+        },
+        {
+          "info": {
+            "name": "Retrieve borrower users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/reports/borrowers"
+          },
+          "docs": "Retrieve borrower users"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

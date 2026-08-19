@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties Closings & eSignature API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Closings & eSignature",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List closings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/closings"
+          },
+          "docs": "List closings"
+        },
+        {
+          "info": {
+            "name": "Create a closing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/closings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a closing"
+        },
+        {
+          "info": {
+            "name": "Get a closing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/closings/:closingId",
+            "params": [
+              {
+                "name": "closingId",
+                "value": "",
+                "type": "path",
+                "description": "The closing ID."
+              }
+            ]
+          },
+          "docs": "Get a closing"
+        },
+        {
+          "info": {
+            "name": "Update a closing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.blendlabs.com/closings/:closingId",
+            "params": [
+              {
+                "name": "closingId",
+                "value": "",
+                "type": "path",
+                "description": "The closing ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a closing"
+        },
+        {
+          "info": {
+            "name": "Submit (send) a closing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/closings/:closingId/send",
+            "params": [
+              {
+                "name": "closingId",
+                "value": "",
+                "type": "path",
+                "description": "The closing ID."
+              }
+            ]
+          },
+          "docs": "Submit (send) a closing"
+        },
+        {
+          "info": {
+            "name": "List eSignature packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/applications/:id/packages",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "List eSignature packages"
+        },
+        {
+          "info": {
+            "name": "Create an eSignature package",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/applications/:id/packages",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an eSignature package"
+        },
+        {
+          "info": {
+            "name": "Issue a draft package for signature",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/applications/:id/packages/:packageId/issue",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              },
+              {
+                "name": "packageId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Issue a draft package for signature"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

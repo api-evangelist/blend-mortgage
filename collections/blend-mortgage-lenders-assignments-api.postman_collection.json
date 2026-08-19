@@ -1,0 +1,565 @@
+{
+  "item": [
+    {
+      "id": "018d7592-8b72-4ec6-b529-2613d549b4e6",
+      "name": "Lenders & Assignments",
+      "description": {
+        "content": "Lender users and application assignments.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "57b1be1d-7d40-403d-8399-a36e02ae62ba",
+          "name": "List lenders",
+          "request": {
+            "name": "List lenders",
+            "description": {
+              "content": "Retrieve lender (employee) users available for assignment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lenders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "emails",
+                  "value": "<string>",
+                  "description": "Comma-separated lender emails to look up."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfe4cb0e-17c8-4f75-a98e-725c32f0a172",
+              "name": "A list of lenders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lenders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "emails",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"email\": \"vA8Ex@CgFeZLYPWeElFbqoa.tdm\",\n      \"permittedSolutionSubTypes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"roleNames\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"email\": \"NaW8ZWQ-EPF@CHFHzZJiRyOQYb.rdqs\",\n      \"permittedSolutionSubTypes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"roleNames\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "612edbc6-f456-41d9-91d2-ee6aa205eb3c",
+          "name": "Create lenders",
+          "request": {
+            "name": "Create lenders",
+            "description": {},
+            "url": {
+              "path": [
+                "lenders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "747367fa-25b6-4d27-bbcd-f2eb2a8cd4b1",
+              "name": "The created lenders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lenders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ffa3847-c8ea-4088-a280-f92a9cccfd55",
+          "name": "Update lenders",
+          "request": {
+            "name": "Update lenders",
+            "description": {},
+            "url": {
+              "path": [
+                "lenders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7fe02dd9-8277-4596-a7ca-0be26176454f",
+              "name": "The updated lenders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lenders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8daea8f-14ca-472c-a6d3-e460ec30a233",
+          "name": "Remove lenders",
+          "request": {
+            "name": "Remove lenders",
+            "description": {},
+            "url": {
+              "path": [
+                "lenders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6bb05365-0487-479a-88c6-b256042d23ab",
+              "name": "Removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lenders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61d458e4-d624-46f2-b7b8-5ccc254922b9",
+          "name": "List assigned users",
+          "request": {
+            "name": "List assigned users",
+            "description": {},
+            "url": {
+              "path": [
+                "applications",
+                ":id",
+                "assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b6b8e42-6c0d-4eb4-839b-c3d00f1d3a6a",
+              "name": "The users assigned to the application.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications",
+                    ":id",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93b4599b-15fe-482c-98de-4ebcb9e27a79",
+          "name": "Override assignees",
+          "request": {
+            "name": "Override assignees",
+            "description": {},
+            "url": {
+              "path": [
+                "applications",
+                ":id",
+                "assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assignees\": [\n    {\n      \"userId\": \"<string>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userId\": \"<string>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ead6a708-4cfd-44ff-9846-dceaa0884f2a",
+              "name": "The updated assignments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications",
+                    ":id",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assignees\": [\n    {\n      \"userId\": \"<string>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userId\": \"<string>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blendlabs.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ab030e07-2826-4e8f-a1e8-d50cc9a41ffb",
+    "name": "Blend Public Borrowers & Parties Lenders & Assignments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).\n\nendpointsModeled: The paths, methods, and resource names in this document are modeled from Blend's public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.\n\nContact Support:\n Name: Blend Labs",
+      "type": "text/plain"
+    }
+  }
+}

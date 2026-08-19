@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties Consumer Lending & Deposit API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Consumer Lending & Deposit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a consumer lending application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/consumer-lending/applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "Get a consumer lending application"
+        },
+        {
+          "info": {
+            "name": "Update a consumer lending application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.blendlabs.com/consumer-lending/applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a consumer lending application"
+        },
+        {
+          "info": {
+            "name": "Get an account opening application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/account-opening/applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "Get an account opening application"
+        },
+        {
+          "info": {
+            "name": "List deposit account applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/deposit-accounts/applications"
+          },
+          "docs": "List deposit account applications"
+        },
+        {
+          "info": {
+            "name": "List deposit account products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/deposit-accounts/products"
+          },
+          "docs": "List deposit account products"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

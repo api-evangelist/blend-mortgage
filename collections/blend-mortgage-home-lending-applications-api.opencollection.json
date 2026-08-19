@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties Home Lending Applications API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Home Lending Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List home lending applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/home-lending/applications",
+            "params": [
+              {
+                "name": "exportable",
+                "value": "",
+                "type": "query",
+                "description": "Return only applications ready to export."
+              },
+              {
+                "name": "losId-exists",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether an LOS ID has been assigned."
+              }
+            ]
+          },
+          "docs": "Lists home lending applications. Supports filters used for export flows such as exportable=true and losId-exists=false."
+        },
+        {
+          "info": {
+            "name": "Create a home lending application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/home-lending/applications",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new home lending application. The minimum required input is the primary borrower party's name (firstName, lastName) and email."
+        },
+        {
+          "info": {
+            "name": "Get application data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/home-lending/applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "Get application data"
+        },
+        {
+          "info": {
+            "name": "Update application data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.blendlabs.com/home-lending/applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update application metadata, including the losId, or archive the application."
+        },
+        {
+          "info": {
+            "name": "Delete an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.blendlabs.com/home-lending/applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "Delete an application"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

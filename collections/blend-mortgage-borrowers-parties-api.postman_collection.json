@@ -1,0 +1,678 @@
+{
+  "item": [
+    {
+      "id": "741eb6bb-858a-446f-9d08-2e4c3911ed40",
+      "name": "Borrowers & Parties",
+      "description": {
+        "content": "Borrowers, coborrowers, realtors, employers, incomes, and positions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c927bf1d-17d3-4203-ba64-1eb05a1aee67",
+          "name": "List parties for an application",
+          "request": {
+            "name": "List parties for an application",
+            "description": {},
+            "url": {
+              "path": [
+                "applications",
+                ":id",
+                "parties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7da508c-65f7-4379-9c07-9d090c1f80a0",
+              "name": "The parties on the application.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications",
+                    ":id",
+                    "parties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"email\": \"JN2iSVo@mUfqFYxLrOEKa.ji\",\n      \"econsent\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"email\": \"MAtMJbpQq8@DaYVmaHhttrAmmQg.hf\",\n      \"econsent\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35c0e4f6-c957-466e-9fb3-601c58027a5c",
+          "name": "Add a party (coborrower, etc.) to an application",
+          "request": {
+            "name": "Add a party (coborrower, etc.) to an application",
+            "description": {},
+            "url": {
+              "path": [
+                "applications",
+                ":id",
+                "parties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\"\n  },\n  \"email\": \"<email>\",\n  \"role\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "597b5d77-7cf2-416a-8171-e42d910a19e9",
+              "name": "The created party.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications",
+                    ":id",
+                    "parties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\"\n  },\n  \"email\": \"<email>\",\n  \"role\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"email\": \"g236Cd@Lc.bqu\",\n  \"econsent\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86866d0d-90d1-465c-8fa9-02063ab40443",
+          "name": "Update a party",
+          "request": {
+            "name": "Update a party",
+            "description": {},
+            "url": {
+              "path": [
+                "applications",
+                ":id",
+                "parties",
+                ":partyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partyId",
+                  "description": "(Required) The party ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\"\n  },\n  \"email\": \"<email>\",\n  \"role\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "558d7f70-ffe2-4da2-859d-7292f4fcf5f9",
+              "name": "The updated party.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications",
+                    ":id",
+                    "parties",
+                    ":partyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partyId",
+                      "description": "(Required) The party ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\"\n  },\n  \"email\": \"<email>\",\n  \"role\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"email\": \"g236Cd@Lc.bqu\",\n  \"econsent\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "075b5ffd-3d54-4a57-97ee-65f4d24787b5",
+          "name": "Remove a party",
+          "request": {
+            "name": "Remove a party",
+            "description": {},
+            "url": {
+              "path": [
+                "applications",
+                ":id",
+                "parties",
+                ":partyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partyId",
+                  "description": "(Required) The party ID."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49f330f3-6607-402e-b456-51d59d7646a1",
+              "name": "Removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications",
+                    ":id",
+                    "parties",
+                    ":partyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partyId",
+                      "description": "(Required) The party ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db4198f6-9378-41af-acdb-b250626a419f",
+          "name": "Get borrower positions",
+          "request": {
+            "name": "Get borrower positions",
+            "description": {},
+            "url": {
+              "path": [
+                "applications",
+                ":id",
+                "borrower-positions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46dc426b-54f2-46bb-9e39-0f67ee6d5607",
+              "name": "Borrower positions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications",
+                    ":id",
+                    "borrower-positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56818722-bf51-4266-96c8-b7427020889e",
+          "name": "Set borrower positions",
+          "request": {
+            "name": "Set borrower positions",
+            "description": {},
+            "url": {
+              "path": [
+                "applications",
+                ":id",
+                "borrower-positions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "120cd38c-7e61-42db-84ea-239e28d2bec6",
+              "name": "Updated borrower positions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applications",
+                    ":id",
+                    "borrower-positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blendlabs.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7882aaca-315e-4ecf-82ca-185db6bce2dc",
+    "name": "Blend Public Borrowers & Parties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).\n\nendpointsModeled: The paths, methods, and resource names in this document are modeled from Blend's public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.\n\nContact Support:\n Name: Blend Labs",
+      "type": "text/plain"
+    }
+  }
+}

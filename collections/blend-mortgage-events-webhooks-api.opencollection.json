@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties Events & Webhooks API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events & Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/events"
+          },
+          "docs": "Lists event notifications (for example Application Submitted, Documents Submitted, Consumer Information Updated, Application Information Updated)."
+        },
+        {
+          "info": {
+            "name": "Get event descriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/events/descriptions"
+          },
+          "docs": "Get event descriptions"
+        },
+        {
+          "info": {
+            "name": "Get an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an event"
+        },
+        {
+          "info": {
+            "name": "Set event status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/events/:eventId/status",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Acknowledge an event so it is not redelivered."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

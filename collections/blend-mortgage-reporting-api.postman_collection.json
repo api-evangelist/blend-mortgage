@@ -1,0 +1,242 @@
+{
+  "item": [
+    {
+      "id": "b59ba71f-a44a-4f53-9816-bef7a67dafc7",
+      "name": "Reporting",
+      "description": {
+        "content": "Reporting and analytics datasets.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6086431-2786-4c50-b022-81ce5d644a56",
+          "name": "Retrieve basic loan data",
+          "request": {
+            "name": "Retrieve basic loan data",
+            "description": {},
+            "url": {
+              "path": [
+                "reports",
+                "loans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab214a26-a38c-471b-b985-a95b11166e4d",
+              "name": "Loan reporting dataset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    "loans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "017b9a14-68c0-4a9f-8a67-36aeea603719",
+          "name": "Retrieve lender users and metrics",
+          "request": {
+            "name": "Retrieve lender users and metrics",
+            "description": {},
+            "url": {
+              "path": [
+                "reports",
+                "lenders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1352ef2f-0a72-4d46-80bf-e8a5173fc8f0",
+              "name": "Lender reporting dataset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    "lenders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "118b2470-2e94-41b2-8a51-9ae5f2542b5c",
+          "name": "Retrieve borrower users",
+          "request": {
+            "name": "Retrieve borrower users",
+            "description": {},
+            "url": {
+              "path": [
+                "reports",
+                "borrowers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ca38984-9b8a-4f20-a245-f5fd9d3dae26",
+              "name": "Borrower reporting dataset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    "borrowers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blendlabs.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ed77a0ae-4a2c-414c-9677-1e8f9704243f",
+    "name": "Blend Public Borrowers & Parties Reporting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).\n\nendpointsModeled: The paths, methods, and resource names in this document are modeled from Blend's public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.\n\nContact Support:\n Name: Blend Labs",
+      "type": "text/plain"
+    }
+  }
+}

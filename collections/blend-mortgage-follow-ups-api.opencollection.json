@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties Follow-ups API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Follow-ups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List follow-ups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/applications/:id/follow-ups",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "List follow-ups"
+        },
+        {
+          "info": {
+            "name": "Create a follow-up",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/applications/:id/follow-ups",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a follow-up"
+        },
+        {
+          "info": {
+            "name": "Get a follow-up",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/applications/:id/follow-ups/:followUpId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              },
+              {
+                "name": "followUpId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a follow-up"
+        },
+        {
+          "info": {
+            "name": "Update a follow-up",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.blendlabs.com/applications/:id/follow-ups/:followUpId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              },
+              {
+                "name": "followUpId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a follow-up"
+        },
+        {
+          "info": {
+            "name": "Remove a follow-up",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.blendlabs.com/applications/:id/follow-ups/:followUpId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              },
+              {
+                "name": "followUpId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a follow-up"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

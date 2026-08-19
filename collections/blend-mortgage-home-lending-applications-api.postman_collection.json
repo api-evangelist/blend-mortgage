@@ -1,0 +1,873 @@
+{
+  "item": [
+    {
+      "id": "82260355-f15e-4428-951b-2cb8757add2c",
+      "name": "Home Lending Applications",
+      "description": {
+        "content": "Create and manage mortgage (home lending) applications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "295fc822-dff1-4385-be60-1dd96ad365a7",
+          "name": "List home lending applications",
+          "request": {
+            "name": "List home lending applications",
+            "description": {
+              "content": "Lists home lending applications. Supports filters used for export flows such as exportable=true and losId-exists=false.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "home-lending",
+                "applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "exportable",
+                  "value": "<boolean>",
+                  "description": "Return only applications ready to export."
+                },
+                {
+                  "disabled": false,
+                  "key": "losId-exists",
+                  "value": "<boolean>",
+                  "description": "Filter by whether an LOS ID has been assigned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93294134-f916-4e76-b8af-103bb2c18e88",
+              "name": "A list of home lending applications.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exportable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "losId-exists",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"solutionSubType\": \"string\",\n      \"loanPurposeType\": \"string\",\n      \"losId\": \"string\",\n      \"parties\": [\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"firstName\": \"string\",\n            \"lastName\": \"string\"\n          },\n          \"email\": \"WeZwqVusLnL27c@NsnBEHwjdXfFYOgStFvlsb.poa\",\n          \"econsent\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"firstName\": \"string\",\n            \"lastName\": \"string\"\n          },\n          \"email\": \"DAUcr@EuyUBnsTY.vbj\",\n          \"econsent\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"solutionSubType\": \"string\",\n      \"loanPurposeType\": \"string\",\n      \"losId\": \"string\",\n      \"parties\": [\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"firstName\": \"string\",\n            \"lastName\": \"string\"\n          },\n          \"email\": \"o1QAt1nq9CkI8@YEcflwTPvyzgAMRYeNJVTUpFT.xilh\",\n          \"econsent\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"firstName\": \"string\",\n            \"lastName\": \"string\"\n          },\n          \"email\": \"9xdG@OGJgOdJ.cac\",\n          \"econsent\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64311d6e-cd07-4ba5-ae26-16d9bf9816f5",
+              "name": "Authentication failed or the token is not authorized for this tenant.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exportable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "losId-exists",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1e133e9-af7c-420c-9f42-4dec84c191cb",
+          "name": "Create a home lending application",
+          "request": {
+            "name": "Create a home lending application",
+            "description": {
+              "content": "Creates a new home lending application. The minimum required input is the primary borrower party's name (firstName, lastName) and email.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "home-lending",
+                "applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"party\": {\n    \"name\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\"\n    },\n    \"email\": \"<email>\"\n  },\n  \"loanPurposeType\": \"<string>\",\n  \"applicationExperienceType\": \"<string>\",\n  \"applicationSource\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"crmId\": \"<string>\",\n  \"losId\": \"<string>\",\n  \"leadId\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"sendEmailInvite\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbd7ca65-f1f6-406b-ba83-e43863335a21",
+              "name": "The created application.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"party\": {\n    \"name\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\"\n    },\n    \"email\": \"<email>\"\n  },\n  \"loanPurposeType\": \"<string>\",\n  \"applicationExperienceType\": \"FULL_APPLICATION\",\n  \"applicationSource\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"crmId\": \"<string>\",\n  \"losId\": \"<string>\",\n  \"leadId\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"sendEmailInvite\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"solutionSubType\": \"string\",\n  \"loanPurposeType\": \"string\",\n  \"losId\": \"string\",\n  \"parties\": [\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"email\": \"1yG6@NLNSASsXciAkdqyVQOhmlHYzBSYBamRE.hsap\",\n      \"econsent\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"email\": \"s-s8GNYtK@GEOyOuvHLqdMrYOJVzUNiseRVq.lj\",\n      \"econsent\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c8369c1-99fc-4160-b835-df3cdcb133c6",
+              "name": "The request was invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"party\": {\n    \"name\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\"\n    },\n    \"email\": \"<email>\"\n  },\n  \"loanPurposeType\": \"<string>\",\n  \"applicationExperienceType\": \"FULL_APPLICATION\",\n  \"applicationSource\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"crmId\": \"<string>\",\n  \"losId\": \"<string>\",\n  \"leadId\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"sendEmailInvite\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "402ae81f-5851-4dc6-86fe-be562e886cf6",
+              "name": "Authentication failed or the token is not authorized for this tenant.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"party\": {\n    \"name\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\"\n    },\n    \"email\": \"<email>\"\n  },\n  \"loanPurposeType\": \"<string>\",\n  \"applicationExperienceType\": \"FULL_APPLICATION\",\n  \"applicationSource\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"crmId\": \"<string>\",\n  \"losId\": \"<string>\",\n  \"leadId\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"sendEmailInvite\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b71cdc93-815e-4b7a-9240-745a8eec8b0e",
+          "name": "Get application data",
+          "request": {
+            "name": "Get application data",
+            "description": {},
+            "url": {
+              "path": [
+                "home-lending",
+                "applications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f491232-6860-41bf-82bd-559d285d3ca7",
+              "name": "The application.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"solutionSubType\": \"string\",\n  \"loanPurposeType\": \"string\",\n  \"losId\": \"string\",\n  \"parties\": [\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"email\": \"1yG6@NLNSASsXciAkdqyVQOhmlHYzBSYBamRE.hsap\",\n      \"econsent\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"email\": \"s-s8GNYtK@GEOyOuvHLqdMrYOJVzUNiseRVq.lj\",\n      \"econsent\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f1dc8fa-3e4f-4253-9348-c46185a24f9c",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "813651c4-b8b4-4b16-900e-43f555f63fde",
+          "name": "Update application data",
+          "request": {
+            "name": "Update application data",
+            "description": {
+              "content": "Update application metadata, including the losId, or archive the application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "home-lending",
+                "applications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"losId\": \"<string>\",\n  \"archived\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bbef6378-5e62-43e2-8bf7-68bbee1702bc",
+              "name": "The updated application.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"losId\": \"<string>\",\n  \"archived\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"solutionSubType\": \"string\",\n  \"loanPurposeType\": \"string\",\n  \"losId\": \"string\",\n  \"parties\": [\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"email\": \"1yG6@NLNSASsXciAkdqyVQOhmlHYzBSYBamRE.hsap\",\n      \"econsent\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"email\": \"s-s8GNYtK@GEOyOuvHLqdMrYOJVzUNiseRVq.lj\",\n      \"econsent\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d0ce7d2-5ac3-48b9-95ab-fdd181629b9d",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"losId\": \"<string>\",\n  \"archived\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7ee52cb-7490-40b9-b751-9caae3760110",
+          "name": "Delete an application",
+          "request": {
+            "name": "Delete an application",
+            "description": {},
+            "url": {
+              "path": [
+                "home-lending",
+                "applications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The application ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f6967f3-75a8-4697-bc95-7cd27f980458",
+              "name": "Deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3bac9f2-b900-4bbd-8607-9b757280b1ea",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "home-lending",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The application ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blendlabs.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "749eeb2e-2669-4093-a8dc-2e58a418095a",
+    "name": "Blend Public Borrowers & Parties Home Lending Applications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).\n\nendpointsModeled: The paths, methods, and resource names in this document are modeled from Blend's public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.\n\nContact Support:\n Name: Blend Labs",
+      "type": "text/plain"
+    }
+  }
+}

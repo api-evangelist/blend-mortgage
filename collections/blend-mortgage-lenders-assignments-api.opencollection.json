@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blend Public Borrowers & Parties Lenders & Assignments API",
+    "version": "12.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lenders & Assignments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List lenders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/lenders",
+            "params": [
+              {
+                "name": "emails",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated lender emails to look up."
+              }
+            ]
+          },
+          "docs": "Retrieve lender (employee) users available for assignment."
+        },
+        {
+          "info": {
+            "name": "Create lenders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blendlabs.com/lenders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create lenders"
+        },
+        {
+          "info": {
+            "name": "Update lenders",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.blendlabs.com/lenders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update lenders"
+        },
+        {
+          "info": {
+            "name": "Remove lenders",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.blendlabs.com/lenders"
+          },
+          "docs": "Remove lenders"
+        },
+        {
+          "info": {
+            "name": "List assigned users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blendlabs.com/applications/:id/assignments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ]
+          },
+          "docs": "List assigned users"
+        },
+        {
+          "info": {
+            "name": "Override assignees",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.blendlabs.com/applications/:id/assignments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The application ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Override assignees"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
