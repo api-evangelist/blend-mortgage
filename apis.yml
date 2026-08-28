@@ -13,6 +13,18 @@ description: Blend (Blend Labs) is a cloud digital-lending and account-opening p
   loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).
   API access is credential-gated - tokens are issued to Blend customers and certified
   integration partners rather than through open self-service signup.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
