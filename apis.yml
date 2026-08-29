@@ -282,6 +282,9 @@ apis:
   - type: Documentation
     url: https://developers.blend.com/blend/docs/los-guide-how-to-integrate-with-blend
 common:
+- type: CapabilityMap
+  url: capabilities/blend-mortgage-capability-edges.yml
+  name: Blend Business Capability Map
 - type: AgenticAccess
   url: agentic-access/blend-mortgage-agentic-access.yml
 - type: DomainSecurity

@@ -1,0 +1,65 @@
+slug: blend-mortgage
+provider: Blend
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Home Lending Applications
+  spec_file: blend-mortgage-home-lending-applications-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.9
+  evidence: POST /home-lending/applications 'Create a home lending application'
+  reason: Create/read/update/delete of mortgage (home lending) applications is plainly credit application
+    intake and origination workflow.
+- tag: Borrowers & Parties
+  spec_file: blend-mortgage-borrowers-parties-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.8
+  evidence: POST /applications/{id}/parties  createParty  Add a party (coborrower, etc.) to an application;
+    GET /applications/{id}/borrower-positions
+  reason: Manages borrowers and co-borrowers on digital lending applications in a mortgage/consumer origination
+    platform — credit application intake and origination workflow data.
+- tag: Closings & eSignature
+  spec_file: blend-mortgage-closings-esignature-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.7
+  evidence: POST /closings  createClosing  Create a closing; POST /applications/{id}/packages  createPackage  Create
+    an eSignature package
+  reason: Loan closing scheduling and eSignature document packages within a digital mortgage origination
+    platform — the closing stage of credit origination workflows.
+- tag: Consumer Lending & Deposit
+  spec_file: blend-mortgage-consumer-lending-deposit-api-openapi.yml
+  capability_id: BC-1320
+  capability_id_l1: BC-1320
+  capability_name: Credit & Lending Management
+  confidence: 0.7
+  evidence: GET /consumer-lending/applications/{id} 'Get a consumer lending application'; 'List deposit
+    account applications'
+  reason: Operations manage consumer lending applications (credit origination intake) alongside deposit
+    account-opening applications, so the L1 credit & lending origination area fits; the mix of lending
+    and deposit account opening makes a single L2 unsafe.
+- tag: Documents & Disclosures
+  spec_file: blend-mortgage-documents-disclosures-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.7
+  evidence: GET /home-lending/applications/{id}/file-export 'Export the loan application file'; 'Get application
+    documents'
+  reason: Document collection and loan-file export (Fannie Mae 3.2 / MISMO) into an LOS are part of the
+    credit application origination workflow, not generic document management.
