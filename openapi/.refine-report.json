@@ -1,16 +1,7 @@
 {
   "provider": "blend-mortgage",
   "sources": [
-    "blend-mortgage-borrowers-parties-api-openapi.yml",
-    "blend-mortgage-closings-esignature-api-openapi.yml",
-    "blend-mortgage-consumer-lending-deposit-api-openapi.yml",
-    "blend-mortgage-documents-disclosures-api-openapi.yml",
-    "blend-mortgage-events-webhooks-api-openapi.yml",
-    "blend-mortgage-follow-ups-api-openapi.yml",
-    "blend-mortgage-home-lending-applications-api-openapi.yml",
-    "blend-mortgage-lenders-assignments-api-openapi.yml",
-    "blend-mortgage-products-pricing-api-openapi.yml",
-    "blend-mortgage-reporting-api-openapi.yml"
+    "_original/blend-mortgage-openapi.yml"
   ],
   "outputs": [
     "blend-mortgage-borrowers-parties-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "blend-mortgage-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "blend-mortgage-borrowers-parties-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blend-mortgage-closings-esignature-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blend-mortgage-consumer-lending-deposit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blend-mortgage-documents-disclosures-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blend-mortgage-events-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blend-mortgage-follow-ups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blend-mortgage-home-lending-applications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blend-mortgage-lenders-assignments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blend-mortgage-products-pricing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "blend-mortgage-reporting-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

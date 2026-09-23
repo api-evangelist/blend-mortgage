@@ -1,10 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blend Public Borrowers & Parties Home Lending Applications API
-  description: 'The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com). It lets lenders and certified technology partners programmatically create and manage lending applications across home lending (mortgage), consumer lending, and deposit account opening; manage borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments; subscribe to webhook event notifications; and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).
-
-
-    endpointsModeled: The paths, methods, and resource names in this document are modeled from Blend''s public developer documentation and reference at developers.blend.com (llms.txt endpoint index, Quick Start Guide, LOS Guide, and the create/export home-loan guides). Blend does not publish a fully open self-service OpenAPI - the reference is credential-gated and access tokens are issued to Blend customers and certified partners. Request/response schemas below are representative rather than field-complete; obtain the authoritative machine spec at https://developers.blend.com/blend/openapi once you hold API credentials.'
+  title: Blend Public Home Lending Applications API
+  description: The Blend Public API is the documented REST surface of the Blend Labs digital lending and account-opening platform (developers.blend.com).
   version: 12.0.0
   contact:
     name: Blend Labs
@@ -130,25 +127,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or the token is not authorized for this tenant.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Application:
       type: object
@@ -165,23 +143,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Party'
-    Party:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: object
-          properties:
-            firstName:
-              type: string
-            lastName:
-              type: string
-        email:
-          type: string
-          format: email
-        econsent:
-          type: string
     CreateApplicationRequest:
       type: object
       required:
@@ -235,6 +196,42 @@ components:
           type: string
         message:
           type: string
+    Party:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+        email:
+          type: string
+          format: email
+        econsent:
+          type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or the token is not authorized for this tenant.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     ApplicationId:
       name: id
