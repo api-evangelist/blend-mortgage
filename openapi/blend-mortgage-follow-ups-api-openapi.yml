@@ -103,14 +103,6 @@ paths:
         '204':
           description: Removed.
 components:
-  parameters:
-    ApplicationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The application ID.
   schemas:
     FollowUp:
       type: object
@@ -124,6 +116,14 @@ components:
         dueDate:
           type: string
           format: date
+  parameters:
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The application ID.
   securitySchemes:
     bearerAuth:
       type: http

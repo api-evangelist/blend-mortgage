@@ -127,6 +127,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The application ID.
   schemas:
     Application:
       type: object
@@ -143,6 +151,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Party'
+    Party:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+        email:
+          type: string
+          format: email
+        econsent:
+          type: string
     CreateApplicationRequest:
       type: object
       required:
@@ -196,23 +221,6 @@ components:
           type: string
         message:
           type: string
-    Party:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: object
-          properties:
-            firstName:
-              type: string
-            lastName:
-              type: string
-        email:
-          type: string
-          format: email
-        econsent:
-          type: string
   responses:
     Unauthorized:
       description: Authentication failed or the token is not authorized for this tenant.
@@ -232,14 +240,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    ApplicationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The application ID.
   securitySchemes:
     bearerAuth:
       type: http

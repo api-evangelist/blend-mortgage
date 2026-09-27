@@ -112,22 +112,22 @@ paths:
         '200':
           description: Updated borrower positions.
 components:
+  parameters:
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The application ID.
+    PartyId:
+      name: partyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The party ID.
   schemas:
-    PartyInput:
-      type: object
-      properties:
-        name:
-          type: object
-          properties:
-            firstName:
-              type: string
-            lastName:
-              type: string
-        email:
-          type: string
-          format: email
-        role:
-          type: string
     Party:
       type: object
       properties:
@@ -145,21 +145,21 @@ components:
           format: email
         econsent:
           type: string
-  parameters:
-    ApplicationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The application ID.
-    PartyId:
-      name: partyId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The party ID.
+    PartyInput:
+      type: object
+      properties:
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

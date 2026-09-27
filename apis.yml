@@ -50,7 +50,7 @@ tags:
 - Fintech
 - Loan Origination
 - Banking
-- Financial-Services
+- Financial Services
 tags_raw:
 - Digital Lending
 - Mortgage
@@ -60,6 +60,7 @@ tags_raw:
 - Loan Origination
 - Banking
 - Financial Services
+- Financial-Services
 created: '2026-07-04'
 modified: '2026-07-04'
 specificationVersion: '0.23'
