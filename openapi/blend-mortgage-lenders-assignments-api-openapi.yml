@@ -118,6 +118,14 @@ paths:
         '200':
           description: The updated assignments.
 components:
+  parameters:
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The application ID.
   schemas:
     Lender:
       type: object
@@ -135,14 +143,6 @@ components:
           type: array
           items:
             type: string
-  parameters:
-    ApplicationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The application ID.
   securitySchemes:
     bearerAuth:
       type: http

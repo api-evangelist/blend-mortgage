@@ -136,21 +136,6 @@ components:
         type: string
       description: The application ID.
   schemas:
-    Application:
-      type: object
-      properties:
-        id:
-          type: string
-        solutionSubType:
-          type: string
-        loanPurposeType:
-          type: string
-        losId:
-          type: string
-        parties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Party'
     Party:
       type: object
       properties:
@@ -221,7 +206,28 @@ components:
           type: string
         message:
           type: string
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+        solutionSubType:
+          type: string
+        loanPurposeType:
+          type: string
+        losId:
+          type: string
+        parties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Party'
   responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication failed or the token is not authorized for this tenant.
       content:
@@ -230,12 +236,6 @@ components:
             $ref: '#/components/schemas/Error'
     BadRequest:
       description: The request was invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
       content:
         application/json:
           schema:
