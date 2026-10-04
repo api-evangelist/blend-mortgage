@@ -127,15 +127,29 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    ApplicationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The application ID.
   schemas:
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+        solutionSubType:
+          type: string
+        loanPurposeType:
+          type: string
+        losId:
+          type: string
+        parties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Party'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
     Party:
       type: object
       properties:
@@ -199,35 +213,15 @@ components:
           type: string
         sendEmailInvite:
           type: boolean
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-    Application:
-      type: object
-      properties:
-        id:
-          type: string
-        solutionSubType:
-          type: string
-        loanPurposeType:
-          type: string
-        losId:
-          type: string
-        parties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Party'
+  parameters:
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The application ID.
   responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication failed or the token is not authorized for this tenant.
       content:
@@ -236,6 +230,12 @@ components:
             $ref: '#/components/schemas/Error'
     BadRequest:
       description: The request was invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

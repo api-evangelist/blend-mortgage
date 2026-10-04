@@ -141,13 +141,6 @@ paths:
           description: Package issued to recipients.
 components:
   parameters:
-    ApplicationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The application ID.
     ClosingId:
       name: closingId
       in: path
@@ -155,6 +148,13 @@ components:
       schema:
         type: string
       description: The closing ID.
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The application ID.
   schemas:
     Closing:
       type: object
