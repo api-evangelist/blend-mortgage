@@ -201,6 +201,38 @@ paths:
         '200':
           description: Document metadata.
 components:
+  schemas:
+    ExportStatus:
+      type: object
+      properties:
+        applicationId:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - SUCCESS
+          - FAILED
+        reason:
+          type: string
+    Document:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
   parameters:
     ApplicationId:
       name: id
@@ -216,38 +248,6 @@ components:
       schema:
         type: string
       description: The document ID.
-  schemas:
-    Document:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        name:
-          type: string
-        status:
-          type: string
-    ExportStatus:
-      type: object
-      properties:
-        applicationId:
-          type: string
-        status:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - SUCCESS
-          - FAILED
-        reason:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
   responses:
     NotFound:
       description: The requested resource was not found.

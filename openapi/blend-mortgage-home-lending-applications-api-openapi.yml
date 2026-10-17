@@ -127,46 +127,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: The request was invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or the token is not authorized for this tenant.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Application:
-      type: object
-      properties:
-        id:
-          type: string
-        solutionSubType:
-          type: string
-        loanPurposeType:
-          type: string
-        losId:
-          type: string
-        parties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Party'
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-    Party:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: object
-          properties:
-            firstName:
-              type: string
-            lastName:
-              type: string
-        email:
-          type: string
-          format: email
-        econsent:
-          type: string
     CreateApplicationRequest:
       type: object
       required:
@@ -213,6 +193,45 @@ components:
           type: string
         sendEmailInvite:
           type: boolean
+    Party:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+        email:
+          type: string
+          format: email
+        econsent:
+          type: string
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+        solutionSubType:
+          type: string
+        loanPurposeType:
+          type: string
+        losId:
+          type: string
+        parties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Party'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
   parameters:
     ApplicationId:
       name: id
@@ -221,25 +240,6 @@ components:
       schema:
         type: string
       description: The application ID.
-  responses:
-    Unauthorized:
-      description: Authentication failed or the token is not authorized for this tenant.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

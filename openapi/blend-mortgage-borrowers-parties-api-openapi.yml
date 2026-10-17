@@ -113,21 +113,6 @@ paths:
           description: Updated borrower positions.
 components:
   schemas:
-    PartyInput:
-      type: object
-      properties:
-        name:
-          type: object
-          properties:
-            firstName:
-              type: string
-            lastName:
-              type: string
-        email:
-          type: string
-          format: email
-        role:
-          type: string
     Party:
       type: object
       properties:
@@ -144,6 +129,21 @@ components:
           type: string
           format: email
         econsent:
+          type: string
+    PartyInput:
+      type: object
+      properties:
+        name:
+          type: object
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+        email:
+          type: string
+          format: email
+        role:
           type: string
   parameters:
     PartyId:
