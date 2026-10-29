@@ -1,4 +1,4 @@
-# Blend (blend-mortgage)
+# Blend
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,137 +64,137 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Blend (Blend Labs) is a cloud digital-lending and account-opening platform for banks, credit unions, and mortgage lenders. Its Builder platform powers consumer-facing origination for mortgage (home lending), consumer lending (home equity, personal loans, credit cards, auto), and deposit account opening. The Blend Public API is a documented REST surface at [developers.blend.com](https://developers.blend.com/blend) (current version v12.0.0) that lets lenders and certified technology partners create and manage lending applications, borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), lenders and assignments, and webhook event notifications, and export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS).
+Blend (Blend Labs) is a cloud digital-lending and account-opening platform for banks, credit unions, and mortgage lenders. Its Builder platform powers consumer-facing origination for mortgage (home lending), consumer lending (home equity, personal loans, credit cards, auto), and deposit account opening. The Blend Public API is a documented REST surface (developers.blend.com) that lets lenders and their technology partners create and manage lending applications, borrowers/parties, documents and disclosures, pricing, closings and eSignature packages, follow-ups (tasks), assignments, and webhook event notifications, and to export industry-standard loan files (Fannie Mae 3.2, MISMO 3.3.1/3.4) into a loan origination system (LOS). API access is credential-gated - tokens are issued to Blend customers and certified integration partners rather than through open self-service signup.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/blend-mortgage/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/blend-mortgage/refs/heads/main/apis.yml)
+**Areas:** Digital Lending · Mortgage · Consumer Lending · Account Opening · Fintech · Loan Origination · Banking · Financial Services
 
-## Access Model (Important)
+## Blend on APIs.io
 
-Blend's API is **documented publicly but access is credential-gated**. There is no open, self-service, credit-card signup for API keys. Tokens are issued to:
+Everything profiled for Blend is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/blend-mortgage/](https://apis.io/providers/blend-mortgage/)** — or go straight to one of the APIs or properties below.
 
-- **Blend customers** (banks, credit unions, mortgage lenders) as an entitlement of their platform subscription - contact your Blend account team.
-- **Certified integration partners** (LOS, POS, CRM, verification, title/closing, and AI-agent integrators) - contact Blend partnerships to build and certify against the Public API in a beta/integration environment.
+### APIs (10)
 
-Authentication uses an `authorization: BEARER {token}` header, plus a `blend-api-version` header (to pin the API version) and a `blend-target-instance` header in the form `tenant~instance`. API Secret Keys (base64-encoded 80-byte secrets) are exchanged for short-lived, request-scoped JWTs at Blend's API Gateway; IP allowlisting and rate limiting are supported.
+- [Blend Borrowers & Parties API](https://apis.io/apis/blend-mortgage/blend-mortgage-borrowers-parties-api/) — Borrowers, coborrowers, realtors, employers, incomes, and positions.
+- [Blend Closings & eSignature API](https://apis.io/apis/blend-mortgage/blend-mortgage-closings-esignature-api/) — Closings, packages, eNotes, and RON sessions.
+- [Blend Consumer Lending & Deposit API](https://apis.io/apis/blend-mortgage/blend-mortgage-consumer-lending-deposit-api/) — Consumer lending, account opening, and deposit account applications.
+- [Blend Documents & Disclosures API](https://apis.io/apis/blend-mortgage/blend-mortgage-documents-disclosures-api/) — Documents, disclosures, tax transcripts, and loan file export.
+- [Blend Events & Webhooks API](https://apis.io/apis/blend-mortgage/blend-mortgage-events-webhooks-api/) — Event notifications and event status.
+- [Blend Follow-ups API](https://apis.io/apis/blend-mortgage/blend-mortgage-follow-ups-api/) — Borrower tasks and conditions.
+- [Blend Home Lending Applications API](https://apis.io/apis/blend-mortgage/blend-mortgage-home-lending-applications-api/) — Create and manage mortgage (home lending) applications.
+- [Blend Lenders & Assignments API](https://apis.io/apis/blend-mortgage/blend-mortgage-lenders-assignments-api/) — Lender users and application assignments.
+- [Blend Products & Pricing API](https://apis.io/apis/blend-mortgage/blend-mortgage-products-pricing-api/) — Apply a priced product to a loan.
+- [Blend Reporting API](https://apis.io/apis/blend-mortgage/blend-mortgage-reporting-api/) — Reporting and analytics datasets.
 
-Blend has also shipped an **MCP server** exposing the lending platform to AI agents, using least-privilege Lending API credentials and enabled per account in a beta environment.
+### Published properties
 
-> **endpointsModeled:** The paths, methods, and resource names in this entry (apis.yml, OpenAPI, and collections) are modeled from Blend's public developer documentation and reference - the developers.blend.com `llms.txt` endpoint index, Quick Start Guide, LOS Guide, API auth/security details, and the create/export home-loan guides. Individual request/response field schemas are representative rather than field-complete, because Blend's authoritative machine-readable spec (developers.blend.com/blend/openapi) is behind credentialed access.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Tags
+#### Agentic access (1)
 
-- Digital Lending
-- Mortgage
-- Consumer Lending
-- Account Opening
-- FinTech
-- Loan Origination
-- Banking
-- Financial Services
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Timestamps
+- [Blend Mortgage Agentic Access](https://apis.io/agentic-access/blend-mortgage/blend-mortgage-agentic-access/)
 
-- **Created:** 2026-07-04
-- **Modified:** 2026-07-04
+#### Collections (11)
 
-## APIs
+Postman and Open Collection request collections.
 
-### Blend Home Lending Applications API
+- [Blend Public API](https://apis.io/collections/blend-mortgage/open-blend-mortgage/)
+- [Blend Public Borrowers & Parties API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-borrowers-parties-api/)
+- [Blend Public Borrowers & Parties Closings & eSignature API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-closings-esignature-api/)
+- [Blend Public Borrowers & Parties Consumer Lending & Deposit API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-consumer-lending-deposit-api/)
+- [Blend Public Borrowers & Parties Documents & Disclosures API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-documents-disclosures-api/)
+- [Blend Public Borrowers & Parties Events & Webhooks API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-events-webhooks-api/)
+- [Blend Public Borrowers & Parties Follow-ups API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-follow-ups-api/)
+- [Blend Public Borrowers & Parties Home Lending Applications API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-home-lending-applications-api/)
+- [Blend Public Borrowers & Parties Lenders & Assignments API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-lenders-assignments-api/)
+- [Blend Public Borrowers & Parties Products & Pricing API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-products-pricing-api/)
+- [Blend Public Borrowers & Parties Reporting API](https://apis.io/collections/blend-mortgage/open-blend-mortgage-reporting-api/)
 
-Create, list, retrieve, update, and delete home lending (mortgage) applications. Manage LOS milestones, decisions, intent-to-proceed, underwriting results, activities, and lender takeover. The minimum to create an application is the primary borrower party name and email.
+#### Security (2)
 
-- **Human URL:** [https://developers.blend.com/blend/docs/create-a-new-home-loan](https://developers.blend.com/blend/docs/create-a-new-home-loan)
-- **Base URL:** `https://api.blendlabs.com`
+Authentication, trust centre, and vulnerability disclosure.
 
-### Blend Borrowers & Parties API
+- [Blend Mortgage Authentication](https://apis.io/security/blend-mortgage/blend-mortgage-authentication/)
+- [Blend Mortgage Domain Security](https://apis.io/security/blend-mortgage/blend-mortgage-domain-security/)
 
-Manage the parties (borrowers, coborrowers, realtors) on an application - add and update parties, capture eConsent, and attach party employers, other incomes, and borrower positions.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://developers.blend.com/blend/reference](https://developers.blend.com/blend/reference)
-- **Base URL:** `https://api.blendlabs.com`
+Published plans, tiers and prices.
 
-### Blend Documents & Disclosures API
+- [Blend Mortgage Plans Pricing](https://apis.io/plans/blend-mortgage/blend-mortgage-plans-pricing/)
 
-Retrieve application and borrower documents, upload documents, read document metadata and export statuses, pull tax transcripts, and export the industry-standard loan application file in Fannie Mae 3.2 or MISMO 3.3.1/3.4 format for import into an LOS.
+#### Rate limits (1)
 
-- **Human URL:** [https://developers.blend.com/blend/docs/export-a-home-loan](https://developers.blend.com/blend/docs/export-a-home-loan)
-- **Base URL:** `https://api.blendlabs.com`
+Published request limits.
 
-### Blend Products & Pricing API
+- [Blend Mortgage Rate Limits](https://apis.io/rate-limits/blend-mortgage/blend-mortgage-rate-limits/)
 
-Apply a priced product to a loan application, aligning the selected rate and product to the borrower's chosen loan terms.
+#### FinOps (1)
 
-- **Human URL:** [https://developers.blend.com/blend/reference](https://developers.blend.com/blend/reference)
-- **Base URL:** `https://api.blendlabs.com`
+What the API costs to run, by operation.
 
-### Blend Closings & eSignature API
+- [Blend Mortgage Finops](https://apis.io/finops/blend-mortgage/blend-mortgage-finops/)
 
-Create and manage closings and eSignature packages - draft and send pre-closing and closing documents, manage eNotes, schedule Remote Online Notarization (RON) sessions, retrieve RON recordings, and issue signable document packages to borrowers.
+## Where to find this API
 
-- **Human URL:** [https://developers.blend.com/blend/reference](https://developers.blend.com/blend/reference)
-- **Base URL:** `https://api.blendlabs.com`
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Blend Follow-ups (Tasks) API
-
-Create, list, retrieve, update, and remove follow-ups (borrower tasks and conditions) on an application to request documents or actions from borrowers during the origination workflow.
-
-- **Human URL:** [https://developers.blend.com/blend/reference](https://developers.blend.com/blend/reference)
-- **Base URL:** `https://api.blendlabs.com`
-
-### Blend Events & Webhooks API
-
-Standard webhook event notifications (Application Submitted, Documents Submitted, Consumer Information Updated, Application Information Updated) plus a REST events surface to list events, get event descriptions, and acknowledge event status - used to drive LOS import and downstream automation.
-
-- **Human URL:** [https://developers.blend.com/blend/docs/los-guide-how-to-integrate-with-blend](https://developers.blend.com/blend/docs/los-guide-how-to-integrate-with-blend)
-- **Base URL:** `https://api.blendlabs.com`
-
-### Blend Consumer Lending & Deposit Accounts API
-
-Retrieve and update consumer lending applications and their documents, read account-opening applications, and list deposit account applications, products, and fundings for the banking/account-opening side of the Blend platform.
-
-- **Human URL:** [https://developers.blend.com/blend/reference](https://developers.blend.com/blend/reference)
-- **Base URL:** `https://api.blendlabs.com`
-
-### Blend Lenders & Assignments API
-
-Create, list, update, and remove lender users, and assign lender users (primary assignee and assignees) to applications so the right loan officers and processors own each loan.
-
-- **Human URL:** [https://developers.blend.com/blend/reference](https://developers.blend.com/blend/reference)
-- **Base URL:** `https://api.blendlabs.com`
-
-### Blend Reporting API
-
-Pull reporting datasets across the platform - loans, borrowers, lender users and metrics, borrower workflows/activities, follow-ups, document metadata, connectivity metrics, and NPS.
-
-- **Human URL:** [https://developers.blend.com/blend/reference](https://developers.blend.com/blend/reference)
-- **Base URL:** `https://api.blendlabs.com`
-
-## Artifacts
-
-- [OpenAPI](openapi/blend-mortgage-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/blend-mortgage.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/blend-mortgage.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Plans](plans/blend-mortgage-plans-pricing.yml)
-- [Rate Limits](rate-limits/blend-mortgage-rate-limits.yml)
-- [FinOps](finops/blend-mortgage-finops.yml)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/blendlabs-inc-)
 - [Website](https://blend.com)
 - [Documentation](https://developers.blend.com/blend)
-- [API Reference](https://developers.blend.com/blend/reference)
-- [Quick Start / Sign Up](https://developers.blend.com/blend/docs/blend-api-quick-start-guide)
+- [API reference](https://developers.blend.com/blend/reference)
+- [Sign up](https://developers.blend.com/blend/docs/blend-api-quick-start-guide)
 - [Blog](https://blend.com/blog)
-- [Plans](plans/blend-mortgage-plans-pricing.yml)
-- [Rate Limits](rate-limits/blend-mortgage-rate-limits.yml)
-- [Fin Ops](finops/blend-mortgage-finops.yml)
 
-## Pricing
+## API Evangelist rating
 
-Blend is an enterprise SaaS lending platform. Pricing is **not published** - deals are negotiated, typically annual, and priced on loan/application volume, product mix (mortgage, consumer lending, deposit account opening, close, verification add-ons), and integration scope. Historically Blend has used per-transaction / per-funded-loan economics in parts of its mortgage business alongside platform subscription fees. The Public API is an entitlement of the customer or partner relationship rather than a separately metered, self-service product. Contact Blend sales or partnerships for current terms.
+**Kin Score 23.9** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 14.5 |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 9.4** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/blend-mortgage/](https://apis.io/providers/blend-mortgage/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Blend: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/blend-mortgage/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
